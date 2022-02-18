@@ -1,16 +1,23 @@
 body {
-    width: 250px;
+    width: 300px;
 }
+
+.title {
+    white-space: nowrap;
+}
+
 
 .subscriptionItem{
 
 }
 .minusIcon{
     color: red;
+    font-size: large;
 }
 
 .plusIcon{
     color: green;
+    font-size: large;
 }
 
 /* INPUT NUMBER*/
