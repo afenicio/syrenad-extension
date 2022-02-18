@@ -1,0 +1,39 @@
+{
+  "name": "Syrenad Extension",
+  "description": "A Chrome extension for the best TMA team",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "contextMenus",
+    "notifications",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "/assets/js/main.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "https://natsystem.atlassian.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "main.html",
+    "default_icon": {
+      "48": "/assets/icons/48.png",
+      "128": "/assets/icons/128.png"
+    }
+  },
+  "icons": {
+    "48": "/assets/icons/48.png",
+    "128": "/assets/icons/128.png"
+  }
+}
