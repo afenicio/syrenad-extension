@@ -91,5 +91,7 @@ function updateSubscribed() {
             content += '<a class="subscriptionItem" href="' + getJiraUrl(jiraId) + '" role="button" target="_blank"><h6><span class="badge bg-secondary">' + getJiraFull(jiraId) + '</span></h6></a>';
         })
     }
-    document.getElementById("subscriptions").innerHTML = content;
+    if(document.getElementById("subscriptions")){
+        document.getElementById("subscriptions").innerHTML = content;
+    }
 }

@@ -4,8 +4,6 @@
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [
-    "contextMenus",
-    "notifications",
     "storage"
   ],
   "content_scripts": [
@@ -19,12 +17,6 @@
       ]
     }
   ],
-  "host_permissions": [
-    "https://natsystem.atlassian.net/*"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "action": {
     "default_popup": "main.html",
     "default_icon": {
