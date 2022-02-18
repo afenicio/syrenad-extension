@@ -7,8 +7,11 @@ const regex = /^((R|S)+([0-9])+)$/g;
 
 const reset = document.getElementById('notify-reset');
 let localObj;
-initStorage();
-updateSubscribed();
+
+window.onload = function(){
+    initStorage();
+    updateSubscribed();
+}
 
 
 jiraId?.addEventListener('input', function (evt) {
@@ -30,11 +33,11 @@ jiraId?.addEventListener('keyup', function (e) {
 });
 
 subscribe?.addEventListener('click', () => {
-    store(jiraId.value);
+    store(jiraId.value.toUpperCase());
 })
 
 unsubscribe?.addEventListener('click', () => {
-    remove(jiraId.value);
+    remove(jiraId.value.toUpperCase());
 })
 
 goButton?.addEventListener('click', () => {
@@ -60,7 +63,7 @@ function initStorage() {
 }
 
 function store(jiraId) {
-    localObj.push(jiraId);
+    localObj.push(jiraId.toString().toUpperCase());
     localObj = [...new Set(localObj)];
     localStorage.setItem('subscribed', JSON.stringify(localObj));
     jiraId.value = null;
@@ -68,7 +71,7 @@ function store(jiraId) {
 }
 
 function remove(jiraId) {
-    const index = localObj.indexOf(jiraId);
+    const index = localObj.indexOf(jiraId.toString().toUpperCase());
     if (index > -1) {
         localObj.splice(index, 1); // 2nd parameter means remove one item only
     }
@@ -78,14 +81,15 @@ function remove(jiraId) {
 }
 
 function updateSubscribed() {
-    let content;
+    let content = 'No subscriptions';
     if (localObj.length > 0) {
         content = "";
         localObj.forEach((jiraId) => {
+/*            content += '<button role="button" class="btn btn-primary position-relative">'+getJiraFull(jiraId)+'<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light"><i\n' +
+                '                    class="minusIcon fa fa-minus-circle"\n' +
+                '                    aria-hidden="true"></i></span></button>';*/
             content += '<a class="subscriptionItem" href="' + getJiraUrl(jiraId) + '" role="button" target="_blank"><h6><span class="badge bg-secondary">' + getJiraFull(jiraId) + '</span></h6></a>';
         })
-    } else {
-        content = 'No subscriptions'
     }
     document.getElementById("subscriptions").innerHTML = content;
 }
