@@ -17,15 +17,18 @@
             <input type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-sm" id="jira-id" placeholder="ex. R1011" autofocus>
 
-            <button class="btn p-2" id="subscribe" role="button" target="_blank"><i class="plusIcon fa fa-plus-circle"
+            <button class="btn p-2" id="subscribe" role="button" target="_blank" disabled="true"><i class="plusIcon fa fa-plus-circle"
                                                                                     aria-hidden="true"></i></button>
-            <button class="btn p-2" id="unsubscribe" role="button" target="_blank"><i
+            <button class="btn p-2" id="unsubscribe" role="button" target="_blank" disabled="true"><i
                     class="minusIcon fa fa-minus-circle"
                     aria-hidden="true"></i></button>
             <button type="button" class="btn btn-primary" id="go-button" disabled="true">Go</button>
         </div>
     </div>
     <div class="mt-3 d-flex flex-wrap" id="subscriptions">
+    </div>
+    <div class="mt-2" id="actionSubscriptions">
+        <a id="unsubscribeAll" role="button"><h6><span class="badge unsubscribeAllButton">Unsubscribe All</span></h6></a>
     </div>
 </div>
 </div>

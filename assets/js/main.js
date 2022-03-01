@@ -1,9 +1,12 @@
 const goButton = document.getElementById('go-button');
 const subscribe = document.getElementById('subscribe');
 const unsubscribe = document.getElementById('unsubscribe');
+const unsubscribeAll = document.getElementById('unsubscribeAll');
 const jiraId = document.getElementById('jira-id');
 const test = document.getElementById('test');
 const regex = /^((R|S)+([0-9])+)$/g;
+const subscriptions = document.getElementById("subscriptions");
+const actionSubscriptions = document.getElementById("actionSubscriptions");
 
 const reset = document.getElementById('notify-reset');
 let localObj;
@@ -11,6 +14,18 @@ let localObj;
 window.onload = function(){
     initStorage();
     updateSubscribed();
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+        let url = tabs[0].url;
+        let jira = url.substr(url.lastIndexOf('/') + 1);
+        if (jira.startsWith('REC')||jira.startsWith('SYR')){
+            jira = jira.replace('REC-','R');
+            jira = jira.replace('SYR-','S');
+            jiraId.setAttribute('value',jira);
+            goButton.disabled = false;
+            subscribe.disabled = false;
+            unsubscribe.disabled = false;
+        }
+    });
 }
 
 
@@ -18,9 +33,11 @@ jiraId?.addEventListener('input', function (evt) {
     if (jiraId.value?.toUpperCase().match(regex)) {
         goButton.disabled = false;
         subscribe.disabled = false;
+        unsubscribe.disabled = false;
     } else {
         goButton.disabled = true;
         subscribe.disabled = true;
+        unsubscribe.disabled = true;
     }
 });
 
@@ -38,6 +55,12 @@ subscribe?.addEventListener('click', () => {
 
 unsubscribe?.addEventListener('click', () => {
     remove(jiraId.value.toUpperCase());
+})
+
+unsubscribeAll?.addEventListener('click', () => {
+    localObj = [];
+    localStorage.setItem('subscribed', JSON.stringify([]));
+    updateSubscribed();
 })
 
 goButton?.addEventListener('click', () => {
@@ -85,13 +108,18 @@ function updateSubscribed() {
     if (localObj.length > 0) {
         content = "";
         localObj.forEach((jiraId) => {
-/*            content += '<button role="button" class="btn btn-primary position-relative">'+getJiraFull(jiraId)+'<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light"><i\n' +
-                '                    class="minusIcon fa fa-minus-circle"\n' +
-                '                    aria-hidden="true"></i></span></button>';*/
             content += '<a class="subscriptionItem" href="' + getJiraUrl(jiraId) + '" role="button" target="_blank"><h6><span class="badge bg-secondary">' + getJiraFull(jiraId) + '</span></h6></a>';
         })
+        if(actionSubscriptions){
+            actionSubscriptions.style.display = 'block';
+        }
+    } else {
+        if(actionSubscriptions){
+            actionSubscriptions.style.display = 'none';
+        }
     }
-    if(document.getElementById("subscriptions")){
-        document.getElementById("subscriptions").innerHTML = content;
+    if(subscriptions){
+        subscriptions.innerHTML = content;
     }
+
 }
