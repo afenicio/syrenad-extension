@@ -121,7 +121,7 @@ function updateSubscribed() {
     if (localObj.length > 0) {
         content = "";
         localObj.forEach((jiraId) => {
-            content += '<a class="subscriptionItem" href="' + getJiraUrl(jiraId) + '" role="button" target="_blank"><h6><span class="badge bg-secondary">' + getJiraFull(jiraId) + '</span></h6></a>';
+            content += '<a class="subscriptionItem ms-1" href="' + getJiraUrl(jiraId) + '" role="button" target="_blank"><h6><span class="badge bg-secondary">' + getJiraFull(jiraId) + '</span></h6></a>';
         })
         if(actionSubscriptions){
             actionSubscriptions.style.display = 'block';
