@@ -61,9 +61,12 @@ unsubscribe?.addEventListener('click', () => {
 })
 
 unsubscribeAll?.addEventListener('click', () => {
-    localObj = [];
-    localStorage.setItem('subscribed', JSON.stringify([]));
-    updateSubscribed();
+    if (confirm("Do you want to unsubscribe to all your jiras?")) {
+        localObj = [];
+        localStorage.setItem('subscribed', JSON.stringify([]));
+        updateSubscribed();
+    } else {
+    }
 })
 
 goButton?.addEventListener('click', () => {
