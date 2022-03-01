@@ -14,12 +14,15 @@ let localObj;
 window.onload = function(){
     initStorage();
     updateSubscribed();
-    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    chrome?.tabs?.query({active: true, lastFocusedWindow: true}, tabs => {
         let url = tabs[0].url;
         let jira = url.substr(url.lastIndexOf('/') + 1);
         if (jira.startsWith('REC')||jira.startsWith('SYR')){
             jira = jira.replace('REC-','R');
             jira = jira.replace('SYR-','S');
+            if(jira.includes('?')){
+                jira = jira.split('?')[0];
+            }
             jiraId.setAttribute('value',jira);
             goButton.disabled = false;
             subscribe.disabled = false;
