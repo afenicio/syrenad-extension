@@ -1,20 +1,15 @@
 # syrenad-extension
 
 ## Usage
-![image](https://user-images.githubusercontent.com/62615679/155724340-48bf96fd-4059-4235-8530-89f881039ece.png)
+![image](https://user-images.githubusercontent.com/62615679/156215554-418a2065-0a97-4c34-bc68-31aa231aa0b6.png)
 
-### Ouvrir un Jira
-Taper R ou S pour REC ou SYR suivi par le numero du Jira, puis fair enter avec le clavier of cliquer sur **GO**
-
-### Souscrire un Jira
-Taper R ou S pour REC ou SYR puis cliquer sur **+**
-
-### Un-souscrire un Jira
-Taper R ou S pour REC ou SYR puis cliquer sur **-**
-
-### Ouvrir un Jira souscrit
-Cliquaer sur le Jira dans la liste des souscriptions. 
-
+- **Ouvrir un Jira** : Taper R ou S suivi par le nulero du Jira + appuyer ENTER sur le bouton GO
+- **Souscrire un Jira** : Taper R ou S suivi par le nulero du Jira + appuyer PLUS sur le bouton +
+- **Un-Souscrire un Jira** : Taper R ou S suivi par le nulero du Jira + appuyer MOINS sur le bouton -
+- **Récupérer un Jira** : Ouvrir le Jira dans le browser puis cliquer sur l'input
+- **Ouvrir un Jira souscrit** : Cliquer sur le badge correspondant au Jira.
+- **Ouvrir tous les Jiras souscrits** : Cliquer sur le bouton OpenAll
+- **Un-Souscrire tous les Jiras souscrits** : Cliquer sur le bouton ClearAll
 
 ## Installation
 
@@ -22,10 +17,9 @@ Cliquaer sur le Jira dans la liste des souscriptions.
 
 ![image](https://user-images.githubusercontent.com/62615679/155721818-ba17a7bd-1c45-4738-9b8f-ee25f217bb77.png)
 
-### Ouvrir dans chrome à l'url chrome://extensions/ et cliquer Charger l'extension non empaquetée.
+### Ouvrir dans chrome à l'url chrome://extensions/ activer le mod-developpeur puis cliquer Charger l'extension non empaquetée.
 
-![image](https://user-images.githubusercontent.com/62615679/155723143-f6b54409-098a-4bf6-8c79-dd276bdb0370.png)
-
+![image](https://user-images.githubusercontent.com/62615679/156223229-e5db9a7c-8c0b-43cf-9f62-7704541f179c.png)
 ### Selectionner le dossiers des sources.
 
 ![image](https://user-images.githubusercontent.com/62615679/155722310-ab992fe7-b08a-4fef-bb10-a5ffcb732a39.png)
