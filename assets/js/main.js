@@ -16,6 +16,22 @@ let localObj;
 window.onload = function(){
     initStorage();
     updateSubscribed();
+}
+
+
+jiraId?.addEventListener('input', function (evt) {
+    if (jiraId.value?.toUpperCase().match(regex)) {
+        goButton.disabled = false;
+        subscribe.disabled = false;
+        unsubscribe.disabled = false;
+    } else {
+        goButton.disabled = true;
+        subscribe.disabled = true;
+        unsubscribe.disabled = true;
+    }
+});
+
+jiraId?.addEventListener('click', function (evt) {
     chrome?.tabs?.query({active: true, lastFocusedWindow: true}, tabs => {
         let url = tabs[0].url;
         let jira = url.substr(url.lastIndexOf('/') + 1);
@@ -31,19 +47,6 @@ window.onload = function(){
             unsubscribe.disabled = false;
         }
     });
-}
-
-
-jiraId?.addEventListener('input', function (evt) {
-    if (jiraId.value?.toUpperCase().match(regex)) {
-        goButton.disabled = false;
-        subscribe.disabled = false;
-        unsubscribe.disabled = false;
-    } else {
-        goButton.disabled = true;
-        subscribe.disabled = true;
-        unsubscribe.disabled = true;
-    }
 });
 
 jiraId?.addEventListener('keyup', function (e) {
