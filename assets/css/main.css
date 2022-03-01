@@ -6,7 +6,13 @@ body {
     white-space: nowrap;
 }
 
+.lightBorder{
+   border:  2px solid #ced4da !important;
+}
 
+.openAllButton{
+    background-color: mediumseagreen;
+}
 .unsubscribeAllButton{
     background-color: indianred;
 

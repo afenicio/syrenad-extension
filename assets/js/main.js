@@ -2,11 +2,13 @@ const goButton = document.getElementById('go-button');
 const subscribe = document.getElementById('subscribe');
 const unsubscribe = document.getElementById('unsubscribe');
 const unsubscribeAll = document.getElementById('unsubscribeAll');
+const openAll = document.getElementById("openAll");
 const jiraId = document.getElementById('jira-id');
 const test = document.getElementById('test');
 const regex = /^((R|S)+([0-9])+)$/g;
 const subscriptions = document.getElementById("subscriptions");
 const actionSubscriptions = document.getElementById("actionSubscriptions");
+
 
 const reset = document.getElementById('notify-reset');
 let localObj;
@@ -64,9 +66,14 @@ unsubscribeAll?.addEventListener('click', () => {
     if (confirm("Do you want to unsubscribe to all your jiras?")) {
         localObj = [];
         localStorage.setItem('subscribed', JSON.stringify([]));
+        jiraId.value = null;
         updateSubscribed();
     } else {
     }
+})
+
+openAll?.addEventListener('click', () => {
+    localObj.forEach(jira=>window.open(getJiraUrl(jira), '_blank'));
 })
 
 goButton?.addEventListener('click', () => {
