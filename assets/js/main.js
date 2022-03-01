@@ -19,7 +19,7 @@ window.onload = function(){
 }
 
 
-jiraId?.addEventListener('input', function (evt) {
+jiraId?.addEventListener('input', function () {
     if (jiraId.value?.toUpperCase().match(regex)) {
         goButton.disabled = false;
         subscribe.disabled = false;
@@ -31,7 +31,7 @@ jiraId?.addEventListener('input', function (evt) {
     }
 });
 
-jiraId?.addEventListener('click', function (evt) {
+jiraId?.addEventListener('click', function () {
     chrome?.tabs?.query({active: true, lastFocusedWindow: true}, tabs => {
         let url = tabs[0].url;
         let jira = url.substr(url.lastIndexOf('/') + 1);
@@ -53,6 +53,18 @@ jiraId?.addEventListener('keyup', function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
         if (jiraId.value?.toUpperCase().match(regex)) {
             window.open(getJiraUrl(jiraId.value), '_blank');
+        }
+    }
+    if (e.key === '+' || e.keyCode === 107) {
+        jiraId.value = jiraId.value.replace('+','');
+        if (jiraId.value?.toUpperCase().match(regex)) {
+            store(jiraId.value.toUpperCase());
+        }
+    }
+    if (e.key === '-' || e.keyCode === 109) {
+        jiraId.value = jiraId.value.replace('-','');
+        if (jiraId.value?.toUpperCase().match(regex)) {
+            remove(jiraId.value.toUpperCase());
         }
     }
 });
