@@ -5,7 +5,7 @@ const unsubscribeAll = document.getElementById('unsubscribeAll');
 const openAll = document.getElementById("openAll");
 const jiraId = document.getElementById('jira-id');
 const test = document.getElementById('test');
-const regex = /^((R|S)+([0-9])+)$/g;
+const regex = /^((R|S|Q)+([0-9])+)$/g;
 const subscriptions = document.getElementById("subscriptions");
 const actionSubscriptions = document.getElementById("actionSubscriptions");
 
@@ -35,9 +35,10 @@ jiraId?.addEventListener('click', function () {
     chrome?.tabs?.query({active: true, lastFocusedWindow: true}, tabs => {
         let url = tabs[0].url;
         let jira = url.substr(url.lastIndexOf('/') + 1);
-        if (jira.startsWith('REC')||jira.startsWith('SYR')){
+        if (jira.startsWith('REC')||jira.startsWith('SYR')||jira.startsWith('QUES')){
             jira = jira.replace('REC-','R');
             jira = jira.replace('SYR-','S');
+            jira = jira.replace('QUES-','Q');
             if(jira.includes('?')){
                 jira = jira.split('?')[0];
             }
@@ -100,7 +101,7 @@ function getJiraUrl(jiraId) {
 }
 
 function getJiraFull(jiraId) {
-    return jiraId?.toUpperCase().replace('R', 'REC-').replace('S', 'SYR-');
+    return jiraId?.toUpperCase().replace('R', 'REC-').replace('S', 'SYR-').replace('Q', 'QUES-');
 }
 
 
