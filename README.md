@@ -1,15 +1,18 @@
 # syrenad-extension
 
+Procedure d'installation plus en bas dans la page 👇
+
 ## Usage
 ![image](https://user-images.githubusercontent.com/62615679/156215554-418a2065-0a97-4c34-bc68-31aa231aa0b6.png)
 
-- **Ouvrir un Jira** : Taper R ou S suivi par le nulero du Jira + appuyer ENTER sur le bouton GO
-- **Souscrire un Jira** : Taper R ou S suivi par le nulero du Jira + appuyer PLUS sur le bouton +
-- **Un-Souscrire un Jira** : Taper R ou S suivi par le nulero du Jira + appuyer MOINS sur le bouton -
+- **Ouvrir un Jira** : Taper R, S ou Q suivi par le nulero du Jira + appuyer ENTER sur le bouton GO
+- **Souscrire un Jira** : Taper R, S ou Q suivi par le nulero du Jira + appuyer PLUS sur le bouton +
+- **Un-Souscrire un Jira** : Taper R, S ou Q suivi par le nulero du Jira + appuyer MOINS sur le bouton -
 - **Récupérer un Jira** : Ouvrir le Jira dans le browser puis cliquer sur l'input
 - **Ouvrir un Jira souscrit** : Cliquer sur le badge correspondant au Jira.
 - **Ouvrir tous les Jiras souscrits** : Cliquer sur le bouton OpenAll
 - **Un-Souscrire tous les Jiras souscrits** : Cliquer sur le bouton ClearAll
+
 
 ## Installation
 
